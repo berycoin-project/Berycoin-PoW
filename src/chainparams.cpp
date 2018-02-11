@@ -166,7 +166,7 @@ static CMainParams mainParams;
 class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
-strNetworkID = "test";
+        strNetworkID = "test";
         consensus.nSubsidyHalvingInterval = 52631579;
         consensus.nMajorityEnforceBlockUpgrade = 51;
         consensus.nMajorityRejectBlockOutdated = 75;
