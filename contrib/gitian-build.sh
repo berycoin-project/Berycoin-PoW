@@ -3,9 +3,9 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 # What to do
-sign=false
-verify=false
-build=false
+sign=true
+verify=true
+build=true
 
 # Systems to build
 linux=true
@@ -13,8 +13,8 @@ windows=true
 osx=true
 
 # Other Basic variables
-SIGNER=
-VERSION=
+SIGNER=Bago213
+VERSION=0.16
 commit=false
 url=https://github.com/berycoin-project/berycoin
 proc=2
