@@ -221,7 +221,7 @@ fi
 # Add a "v" if no -c
 if [[ $commit = false ]]
 then
-	COMMIT="v${VERSION}"
+	COMMIT="${VERSION}"
 fi
 echo ${COMMIT}
 
@@ -320,27 +320,27 @@ then
 	# Linux
 	pushd ./gitian-builder
 	echo ""
-	echo "Verifying v${VERSION} Linux"
+	echo "Verifying ${VERSION} Linux"
 	echo ""
 	./bin/gverify -v -d ../gitian.sigs.bery/ -r ${VERSION}-linux ../berycoin/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
-	echo "Verifying v${VERSION} Windows"
+	echo "Verifying ${VERSION} Windows"
 	echo ""
 	./bin/gverify -v -d ../gitian.sigs.bery/ -r ${VERSION}-win-unsigned ../berycoin/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX	
 	echo ""
-	echo "Verifying v${VERSION} Mac OSX"
+	echo "Verifying ${VERSION} Mac OSX"
 	echo ""	
 	./bin/gverify -v -d ../gitian.sigs.bery/ -r ${VERSION}-osx-unsigned ../berycoin/contrib/gitian-descriptors/gitian-osx.yml
 	# Signed Windows
 	echo ""
-	echo "Verifying v${VERSION} Signed Windows"
+	echo "Verifying ${VERSION} Signed Windows"
 	echo ""
 	./bin/gverify -v -d ../gitian.sigs.bery/ -r ${VERSION}-osx-signed ../berycoin/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
-	echo "Verifying v${VERSION} Signed Mac OSX"
+	echo "Verifying ${VERSION} Signed Mac OSX"
 	echo ""
 	./bin/gverify -v -d ../gitian.sigs.bery/ -r ${VERSION}-osx-signed ../berycoin/contrib/gitian-descriptors/gitian-osx-signer.yml	
 	popd
