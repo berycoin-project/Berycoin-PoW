@@ -42,7 +42,7 @@ QString BitcoinUnits::longName(int unit)
     {
     case BTC: return QString("BERY");
     case mBTC: return QString("lites");
-    case uBTC: return QString("photons");
+    case uBTC: return QString("beryseeds");
     default: return QString("???");
     }
 }
@@ -61,8 +61,8 @@ QString BitcoinUnits::description(int unit)
     switch(unit)
     {
     case BTC: return QString("Berycoins");
-    case mBTC: return QString("Lites (1 / 1" THIN_SP_UTF8 "000)");
-    case uBTC: return QString("Photons (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case mBTC: return QString("BeryFlowers (1 / 1" THIN_SP_UTF8 "000)");
+    case uBTC: return QString("BerySeeds (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }
