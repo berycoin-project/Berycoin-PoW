@@ -30,7 +30,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the berycoin, gitian-builder, gitian.sigs.bery, and berycoin-detached-sigs.
+Run this script from the directory containing the berycoin, gitian-builder, gitian.sigs.BERY, and berycoin-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -229,7 +229,7 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/berycoin-project/gitian.sigs.bery.git
+    git clone https://github.com/berycoin-project/gitian.sigs.BERY.git
     git clone https://github.com/berycoin-project/berycoin-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
@@ -272,7 +272,7 @@ then
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit berycoin=${COMMIT} --url berycoin=${url} ../berycoin/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.bery/ ../berycoin/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.BERY/ ../berycoin/contrib/gitian-descriptors/gitian-linux.yml
 	    mv build/out/berycoin-*.tar.gz build/out/src/berycoin-*.tar.gz ../berycoin-binaries/${VERSION}
 	fi
 	# Windows
@@ -282,7 +282,7 @@ then
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit berycoin=${COMMIT} --url berycoin=${url} ../berycoin/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.bery/ ../berycoin/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.BERY/ ../berycoin/contrib/gitian-descriptors/gitian-win.yml
 	    mv build/out/berycoin-*-win-unsigned.tar.gz inputs/berycoin-win-unsigned.tar.gz
 	    mv build/out/berycoin-*.zip build/out/berycoin-*.exe ../berycoin-binaries/${VERSION}
 	fi
@@ -293,7 +293,7 @@ then
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit berycoin=${COMMIT} --url berycoin=${url} ../berycoin/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.bery/ ../berycoin/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.BERY/ ../berycoin/contrib/gitian-descriptors/gitian-osx.yml
 	    mv build/out/berycoin-*-osx-unsigned.tar.gz inputs/berycoin-osx-unsigned.tar.gz
 	    mv build/out/berycoin-*.tar.gz build/out/berycoin-*.dmg ../berycoin-binaries/${VERSION}
 	fi
@@ -322,27 +322,27 @@ then
 	echo ""
 	echo "Verifying ${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.bery/ -r ${VERSION}-linux ../berycoin/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs.BERY/ -r ${VERSION}-linux ../berycoin/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying ${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.bery/ -r ${VERSION}-win-unsigned ../berycoin/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs.BERY/ -r ${VERSION}-win-unsigned ../berycoin/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX	
 	echo ""
 	echo "Verifying ${VERSION} Mac OSX"
 	echo ""	
-	./bin/gverify -v -d ../gitian.sigs.bery/ -r ${VERSION}-osx-unsigned ../berycoin/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs.BERY/ -r ${VERSION}-osx-unsigned ../berycoin/contrib/gitian-descriptors/gitian-osx.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying ${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.bery/ -r ${VERSION}-osx-signed ../berycoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs.BERY/ -r ${VERSION}-osx-signed ../berycoin/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying ${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.bery/ -r ${VERSION}-osx-signed ../berycoin/contrib/gitian-descriptors/gitian-osx-signer.yml	
+	./bin/gverify -v -d ../gitian.sigs.BERY/ -r ${VERSION}-osx-signed ../berycoin/contrib/gitian-descriptors/gitian-osx-signer.yml	
 	popd
 fi
 
@@ -358,7 +358,7 @@ then
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../berycoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.bery/ ../berycoin/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.BERY/ ../berycoin/contrib/gitian-descriptors/gitian-win-signer.yml
 	    mv build/out/berycoin-*win64-setup.exe ../berycoin-binaries/${VERSION}
 	    mv build/out/berycoin-*win32-setup.exe ../berycoin-binaries/${VERSION}
 	fi
@@ -369,7 +369,7 @@ then
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../berycoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.bery/ ../berycoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.BERY/ ../berycoin/contrib/gitian-descriptors/gitian-osx-signer.yml
 	    mv build/out/berycoin-osx-signed.dmg ../berycoin-binaries/${VERSION}/berycoin-${VERSION}-osx.dmg
 	fi
 	popd
